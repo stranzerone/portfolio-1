@@ -69,51 +69,54 @@ class ProjectsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Container(
-        child: Column(
-          children: [
-            Container(
-                height: 200,
-                width: 200,
-                child: Image(image: AssetImage(image))),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    text,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Text(
-                    text2,
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            launchUrl(demovid);
-                          },
-                          child: Text(
-                            "▶ Demo video ",
-                            style: TextStyle(color: Colors.green),
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            launchUrl(gitcode);
-                          },
-                          child: Text(
-                            '<> Code',
-                            style: TextStyle(color: Colors.green),
-                          )),
-                    ],
-                  ),
-                ],
+      child: Expanded(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                  height: 200,
+                  width: 200,
+                  child: Image(image: AssetImage(image))),
+              SizedBox(
+                height: 5,
               ),
-            )
-          ],
+              Container(
+                child: Column(
+                  children: [
+                    Text(
+                      text,
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Text(
+                      text2,
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              launchUrl(demovid);
+                            },
+                            child: Text(
+                              "▶ Demo video ",
+                              style: TextStyle(color: Colors.green),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              launchUrl(gitcode);
+                            },
+                            child: Text(
+                              '<> Code',
+                              style: TextStyle(color: Colors.green),
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
