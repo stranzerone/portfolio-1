@@ -101,7 +101,9 @@ class _MobileAppState extends State<MobileApp> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Color(0xffFFB53A)),
-                              onPressed: () {},
+                              onPressed: () {
+                                openCV();
+                              },
                               child: Text(
                                 "Download CV",
                                 style: TextStyle(color: Colors.white),
@@ -112,19 +114,6 @@ class _MobileAppState extends State<MobileApp> {
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   child: Container(
-                  //     height: 500,
-                  //     width: 200,
-                  //     decoration: BoxDecoration(
-                  //       image: DecorationImage(
-                  //         image: NetworkImage(
-                  //             'https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-dsc/events/flutter_webinar_logo.png'),
-                  //         fit: BoxFit.cover,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
               Container(
@@ -393,5 +382,15 @@ void _launchGmail(String gmail) async {
     await launch(url);
   } catch (e) {
     throw 'Could not launch $url';
+  }
+}
+
+void openCV() async {
+  const googleDriveLink =
+      'https://drive.google.com/file/d/1ENtFuCE88IoMolpW862Mg0pI4HYL3u2g/view?usp=sharing';
+  if (await canLaunch(googleDriveLink)) {
+    await launch(googleDriveLink);
+  } else {
+    throw 'Could not launch $googleDriveLink';
   }
 }

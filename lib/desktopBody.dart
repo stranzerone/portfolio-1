@@ -100,7 +100,9 @@ class _MainAppState extends State<MainApp> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Color(0xffFFB53A)),
-                              onPressed: () {},
+                              onPressed: () {
+                                openCV();
+                              },
                               child: Text(
                                 "Download CV",
                                 style: TextStyle(color: Colors.white),
@@ -206,29 +208,45 @@ class _MainAppState extends State<MainApp> {
                 height: 40,
               ),
               Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Column(
                   children: [
-                    Text(
-                      "Payment gateways",
-                      style: styleSkills,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Payment gateways",
+                          style: styleSkills,
+                        ),
+                        Text(
+                          "Git hub",
+                          style: styleSkills,
+                        ),
+                        Text(
+                          "Authentaction",
+                          style: styleSkills,
+                        ),
+                      ],
                     ),
-                    Text(
-                      "Rest API",
-                      style: styleSkills,
+                    SizedBox(
+                      height: 20,
                     ),
-                    Text(
-                      "Authentaction",
-                      style: styleSkills,
-                    ),
-                    Text(
-                      "Cloud Firestore",
-                      style: styleSkills,
-                    ),
-                    Text(
-                      "Git hub",
-                      style: styleSkills,
-                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Cloud Firestore",
+                          style: styleSkills,
+                        ),
+                        Text(
+                          "Rest API",
+                          style: styleSkills,
+                        ),
+                        Text(
+                          "Responsive design",
+                          style: styleSkills,
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -325,7 +343,7 @@ class _MainAppState extends State<MainApp> {
                               },
                               child: Icon(
                                 Icons.mail,
-                                color: Color(0XFF3B82F6),
+                                color: Color.fromARGB(255, 106, 116, 131),
                               ),
                             )
                           ],
@@ -358,5 +376,15 @@ void _launchGmail(String gmail) async {
     await launch(url);
   } catch (e) {
     throw 'Could not launch $url';
+  }
+}
+
+void openCV() async {
+  const googleDriveLink =
+      'https://drive.google.com/file/d/1ENtFuCE88IoMolpW862Mg0pI4HYL3u2g/view?usp=sharing';
+  if (await canLaunch(googleDriveLink)) {
+    await launch(googleDriveLink);
+  } else {
+    throw 'Could not launch $googleDriveLink';
   }
 }
